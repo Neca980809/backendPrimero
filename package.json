@@ -1,0 +1,16 @@
+{
+  "name": "modulo4-backend",
+  "version": "1.0.0",
+  "description": "Esta es la primera vez que voy a tocar el backemd",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
