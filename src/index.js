@@ -1,20 +1,21 @@
-import express from "express";
 
-const app=express();
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+import app from "./app.js";
+
+dotenv.config();
+
 const PORT = 3000;
 
-console.log("inicializando servidor...")
+console.log("inicializando servidor");
+mongoose.connect(process.env.MONGO_URI)
+    .then(()=>{
+        console.log("conexion exitosa a Mongo exitosa")
+        app.listen( PORT, ()=>{
+            console.log(`Servidor escuchando en el puerto ${PORT}`);
+        });
+    })
+    .catch((error)=>{console.log("Error al conectar con Mongo: ",error)});
 
-app.get("/users",(req,res)=>{
-    try{
-        console.log("usuarios enviados otra vez perra")
-        res.send("Envio de Usuarios")
-    }catch(error){
-        console.log(`tene un error: ${error}`);
-        res.send("No se pusieron obtener los usuarios");
-    }
-})
 
-app.listen( PORT, ()=>{
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-})
